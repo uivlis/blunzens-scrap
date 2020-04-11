@@ -1,0 +1,30 @@
+{
+  "name": "blunzens-scrap",
+  "version": "1.0.0",
+  "description": "Uncensorable speech spider on BluzelleDB.",
+  "main": "index.js",
+  "dependencies": {
+    "@conversationai/perspectiveapi-js-client": "^1.0.1",
+    "dotenv": "^8.2.0",
+    "jshashes": "^1.0.8",
+    "libxmljs": "^0.19.7",
+    "npm": "^6.14.4",
+    "osmosis": "^1.1.10"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "prep": "rm -rf ./blzjs && git clone https://github.com/bluzelle/blzjs && cd blzjs && npm install && npx webpack",
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/uivlis/blunzens-scrap.git"
+  },
+  "author": "Vlad Silviu Farcas",
+  "license": "SEE LICENSE IN LICENSE",
+  "bugs": {
+    "url": "https://github.com/uivlis/blunzens-scrap/issues"
+  },
+  "homepage": "https://github.com/uivlis/blunzens-scrap#readme"
+}

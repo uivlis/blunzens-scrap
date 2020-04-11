@@ -1,0 +1,4 @@
+.env
+blz-config.js
+/node_modules
+/blzjs
