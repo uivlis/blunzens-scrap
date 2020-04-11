@@ -1,2 +1,2 @@
-# blunzens
-Uncensorable speech protector on BluzelleDB.
+# blunzens-scrap
+Uncensorable speech spider on BluzelleDB.
