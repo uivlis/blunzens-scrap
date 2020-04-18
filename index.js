@@ -17,7 +17,7 @@ const main = async () => {
         blz = await bluzelle({
             address: config.address,
             mnemonic: config.mnemonic,
-            uuid: "bluzens",
+            uuid: "blunzens",
             endpoint: config.endpoint,
             chain_id: config.chain_id
         });
@@ -29,15 +29,15 @@ const main = async () => {
 
     const text = "something inflamatory";
 
-    const censorability = await perspective.getScores(text);
+    const analysis = await perspective.getScores(text);
 
     const speech = JSON.stringify({
         author: "somebody",
         text: text,
         platform: "Twitter",
         tempLink: "url/path/to/text",
-        date: "20.03.2020",
-        perspective: censorability
+        date: "03/20/2020",
+        censorability: ((analysis.TOXICITY - analysis.SPAM) + 1) / 2.0
     })
 
     const id = new Hashes.SHA256().hex(speech);
