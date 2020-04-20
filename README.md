@@ -19,8 +19,17 @@ Run `npm install`.
 
 ## Usage
 
-Run `npm run start`.
-The spider should be running now. Let it crawl for a while. To stop, press `Ctrl+C`.
+You should take advatnage of the comfortable umbrella of a VPN. Our suggestion is ProtonVPN. After sign-up and installation, don't forget to run:
+```
+sudo protonvpn c
+```
+before each run of the following instruction:
+```
+npm start
+```
+The spider should be running now. Let it crawl for a while, until it stops.
+You can run `npm start` any time you wish to update the BluzelleDB.
+
 
 
 
