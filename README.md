@@ -1,10 +1,6 @@
 # blunzens-scrap
 Uncensorable speech spider on BluzelleDB.
 
-## Note
-
-This is a test, do not (yet) follow the below instructions.
-
 ## Configuration
 
 Run `npm run prep`.
