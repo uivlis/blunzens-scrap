@@ -3,13 +3,9 @@ Uncensorable speech spider on BluzelleDB.
 
 ## Configuration
 
-Run `npm run prep`.
-
-Copy `.env.example` to `.env` and add your keys.
+Copy `.env.example` to `.env` and add your Google Perspective API key and BLZ mnemonic.
 You must have a Google Perspective API key. To get one, visit https://www.perspectiveapi.com/#/home.
-
-Copy `./blzjs/samples/blz-config.js.sample` to `blz-config.js` and add your Bluzelle credentials.
-You must have a Bluzelle testnet account. For more info, visit https://docs.bluzelle.com/developers/bluzelle-db/getting-started-with-testnet.
+You must also have a BLZ wallet. To create one, visit https://staking.bluzelle.com/.
 
 Run `npm install`.
 

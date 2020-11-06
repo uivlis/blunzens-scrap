@@ -5,6 +5,7 @@
   "main": "index.js",
   "dependencies": {
     "@conversationai/perspectiveapi-js-client": "^1.0.1",
+    "bluzelle": "^2.1.5",
     "chrono-node": "^1.4.5",
     "dotenv": "^8.2.0",
     "google-trends-api": "^4.9.0",
@@ -16,7 +17,6 @@
   },
   "devDependencies": {},
   "scripts": {
-    "prep": "rm -rf ./blzjs && git clone https://github.com/bluzelle/blzjs && cd blzjs && npm install && npx webpack",
     "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
