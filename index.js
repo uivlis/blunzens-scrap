@@ -53,6 +53,7 @@ function scrapeSpeech(entity) {
 
 async function analyzeSpeech(speech) {
     let errored = false;
+    let analysis;
     do {
         try {
             analysis = await perspective.getScores(speech.text);
@@ -61,14 +62,16 @@ async function analyzeSpeech(speech) {
             errored = true;
             console.error(e.message, "Retrying to fetch scores...");
         }
+        await new Promise(resolve => setTimeout(resolve, Math.random() * 500 + 250))
     } while(errored);
+    return analysis;
 }
 
 const main = async () => {
 
     let blz = bluzelle({
         mnemonic: process.env.BLZ_MNEMONIC,
-        uuid: Date.now().toString(),
+        uuid: "Blunzens",
         endpoint: process.env.BLZ_ENDPOINT,
         chain_id: process.env.BLZ_CHAIN_ID
     })
@@ -85,11 +88,10 @@ const main = async () => {
         resolve(speeches);
     }))).flat();
 
-    speeches.forEach(async (speech) => {
-        let analysis;
-        setTimeout(async function() {
-            analysis = await analyzeSpeech(speech);
-        }, Math.random() * 4000 + 1000);
+    for (i in speeches) {
+        let speech = speeches[i];
+        let analysis = await analyzeSpeech(speech);
+        console.log("Analysis: ", JSON.stringify(analysis) + "for speech: ", JSON.stringify(speech), "at position: ", i)
         const censorability = (((analysis.TOXICITY - analysis.SPAM) + 1) / 2.0).toFixed(2);
         if (censorability > CENSORABILITY_THRESHOLD) {
             speech.censorability = censorability;
@@ -97,15 +99,17 @@ const main = async () => {
             const id = new Hashes.SHA256().hex(blzSpeech);
             let res;
             try {
-                res = await blz.create(id, blzSpeech, {'gas_price': 1});
+                res = await blz.create(id, blzSpeech, {'gas_price': 10, 'max_gas': 7000000});
+                console.log("creation time.\\|")
                 successPrint(res);
                 res = await blz.read(id);
+                console.log("read time.\\|")
                 successPrint(JSON.parse(res));
             } catch (e) {
-                console.error(e.message);
+                console.error(e);
             }
         }
-    })
+    }
 }
 
 main();
