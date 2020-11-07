@@ -78,8 +78,6 @@ const main = async () => {
 
     let entities = await scrapEntities();
 
-    console.log(entities);
-
     let speeches = (await Promise.all(await new Promise(resolve => {
         let speeches = [];
         entities.map(async entity => {
@@ -91,7 +89,6 @@ const main = async () => {
     for (i in speeches) {
         let speech = speeches[i];
         let analysis = await analyzeSpeech(speech);
-        console.log("Analysis: ", JSON.stringify(analysis) + "for speech: ", JSON.stringify(speech), "at position: ", i)
         const censorability = (((analysis.TOXICITY - analysis.SPAM) + 1) / 2.0).toFixed(2);
         if (censorability > CENSORABILITY_THRESHOLD) {
             speech.censorability = censorability;
@@ -100,10 +97,8 @@ const main = async () => {
             let res;
             try {
                 res = await blz.create(id, blzSpeech, {'gas_price': 10, 'max_gas': 7000000});
-                console.log("creation time.\\|")
                 successPrint(res);
                 res = await blz.read(id);
-                console.log("read time.\\|")
                 successPrint(JSON.parse(res));
             } catch (e) {
                 console.error(e);
