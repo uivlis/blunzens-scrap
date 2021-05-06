@@ -6,7 +6,7 @@
   "dependencies": {
     "@conversationai/perspectiveapi-js-client": "^1.0.1",
     "bluzelle": "^2.1.5",
-    "chrono-node": "^1.4.5",
+    "chrono-node": "^2.2.4",
     "dotenv": "^8.2.0",
     "google-trends-api": "^4.9.0",
     "jshashes": "^1.0.8",
